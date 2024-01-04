@@ -7,13 +7,22 @@
 export function preventSingleLetterOrphans (input: string): string {
     if (input) {
       // single-letter words (CS language)
-      input = input.replace(' a ', ' a\u00A0')
-      input = input.replace(' i ', ' i\u00A0')
-      input = input.replace(' k ', ' k\u00A0')
-      input = input.replace(' o ', ' o\u00A0')
-      input = input.replace(' s ', ' s\u00A0')
-      input = input.replace(' v ', ' v\u00A0')
-      input = input.replace(' z ', ' z\u00A0')
+      // lower case
+      input = input.replaceAll(' a ', ' a\u00A0')
+      input = input.replaceAll(' i ', ' i\u00A0')
+      input = input.replaceAll(' k ', ' k\u00A0')
+      input = input.replaceAll(' o ', ' o\u00A0')
+      input = input.replaceAll(' s ', ' s\u00A0')
+      input = input.replaceAll(' v ', ' v\u00A0')
+      input = input.replaceAll(' z ', ' z\u00A0')
+      // upper case
+      input = input.replaceAll(' A ', ' A\u00A0')
+      input = input.replaceAll(' I ', ' I\u00A0')
+      input = input.replaceAll(' K ', ' K\u00A0')
+      input = input.replaceAll(' O ', ' O\u00A0')
+      input = input.replaceAll(' S ', ' S\u00A0')
+      input = input.replaceAll(' V ', ' V\u00A0')
+      input = input.replaceAll(' Z ', ' Z\u00A0')
       // other special symbols
       input = input.replace(' - ', ' -\u00A0')
       input = input.replace(' č. ', ' č.\u00A0')
