@@ -47,4 +47,8 @@ test('should add non-breaking space to appropriate places', () => {
   expect(text3).toBe("Hle. A\xa0to je vše.")
   const text4 = preventSingleLetterOrphans("Hle: A s tím je to vše.")
   expect(text4).toBe("Hle: A\xa0s\xa0tím je to vše.")
+  const text5 = preventSingleLetterOrphans("(něco v závorce) a s tím je to vše.")
+  expect(text5).toBe("(něco v\xa0závorce) a\xa0s\xa0tím je to vše.")
+  const text6 = preventSingleLetterOrphans("něco před závorkou (a s tím je to vše).")
+  expect(text6).toBe("něco před závorkou (a\xa0s\xa0tím je to vše).")
 })
