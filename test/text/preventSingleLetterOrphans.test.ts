@@ -42,6 +42,20 @@ test('should add non-breaking space after capital "A" at the begining', () => {
   expect(text).toBe("A\xa0to je vše")
 })
 
+test('should add non-breaking space after capital "A" when after special symbols', () => {
+  let text = preventSingleLetterOrphans("První věta. A druhá věta")
+  expect(text).toBe("První věta. A\xa0druhá věta")
+  text = preventSingleLetterOrphans("První věta? A druhá věta")
+  expect(text).toBe("První věta? A\xa0druhá věta")
+  text = preventSingleLetterOrphans("První věta! A druhá věta")
+  expect(text).toBe("První věta! A\xa0druhá věta")
+  text = preventSingleLetterOrphans("První věta: A druhá věta")
+  expect(text).toBe("První věta: A\xa0druhá věta")
+  text = preventSingleLetterOrphans("První věta; A druhá věta")
+  expect(text).toBe("První věta; A\xa0druhá věta")
+})
+
+
 test('should add non-breaking space to appropriate places', () => {
   const text1 = preventSingleLetterOrphans("Hle, a to je vše.")
   expect(text1).toBe("Hle, a\xa0to je vše.")
