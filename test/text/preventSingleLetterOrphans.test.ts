@@ -51,6 +51,12 @@ test('should add non-breaking space after capital "K"', () => {
   expect(text).toBe("Ulice jménem K\xa0Novým dvorům")
 })
 
+test('should NOT add non-breaking space after capital "A"', () => {
+  const text = preventSingleLetterOrphans("případy B i A jsou stejné")
+  expect(text).not.toBe("případy B i\xa0A\xa0jsou stejné")
+  expect(text).toBe("případy B i\xa0A jsou stejné")
+})
+
 test('should add non-breaking space after capital "A" at the begining of sentences', () => {
   let text = preventSingleLetterOrphans("První věta. A druhá věta")
   expect(text).toBe("První věta. A\xa0druhá věta")
