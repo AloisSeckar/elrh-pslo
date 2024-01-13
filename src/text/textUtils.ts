@@ -1,4 +1,4 @@
-// VERSION: 1.3.2
+// VERSION: 1.4
 // LAST UPDATE: 2024-01-13
 // DESCRIPTION:
 // replace single-letter words from being left alone at the end of the line
@@ -8,14 +8,10 @@
 export function preventSingleLetterOrphans (input: string): string {
   if (input) {
     // single-letter words (CS language)
-    // lower case - possible combinations
-    input = input.replace(/(\s\(?)([ai])\s([ikosuvz])\s/g, '$1$2\xa0$3\xa0')
-    // lower case
-    input = input.replace(/(\s\(?)([aikosuvz])\s/g, '$1$2\xa0')
-    // upper case- possible combinations
-    input = input.replace(/(\s?\(?)([AI])\s([ikosuvz])\s/g, '$1$2\xa0$3\xa0')
-    // upper case
-    input = input.replace(/(\s?\(?)([AIKOSUVZ])\s/g, '$1$2\xa0')
+    // dual occurences
+    input = input.replace(/(\s\(?)([AIai])\s([IKOSUVZikosuvz])\s/g, '$1$2\xa0$3\xa0')
+    // single occurences
+    input = input.replace(/(\s\(?)([AIKOSUVZaikosuvz])\s/g, '$1$2\xa0')
     // other special symbols
     input = input.replace(' - ', ' -\xa0')
     input = input.replace(' č. ', ' č.\xa0')

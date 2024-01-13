@@ -1,5 +1,5 @@
 // UNIT TESTS FOR: /src/text/textUtils.ts
-// TEST VERSION: 1.3
+// TEST VERSION: 1.4
 // LAST UPDATE: 2024-01-13
 
 import { expect, test } from 'vitest'
@@ -51,13 +51,7 @@ test('should add non-breaking space after capital "K"', () => {
   expect(text).toBe("Ulice jménem K\xa0Novým dvorům")
 })
 
-test('should add non-breaking space after capital "A" at the begining', () => {
-  const text = preventSingleLetterOrphans("A to je vše")
-  expect(text).not.toBe("A to je vše")
-  expect(text).toBe("A\xa0to je vše")
-})
-
-test('should add non-breaking space after capital "A" when after special symbols', () => {
+test('should add non-breaking space after capital "A" at the begining of sentences', () => {
   let text = preventSingleLetterOrphans("První věta. A druhá věta")
   expect(text).toBe("První věta. A\xa0druhá věta")
   text = preventSingleLetterOrphans("První věta? A druhá věta")
@@ -68,4 +62,11 @@ test('should add non-breaking space after capital "A" when after special symbols
   expect(text).toBe("První věta: A\xa0druhá věta")
   text = preventSingleLetterOrphans("První věta; A druhá věta")
   expect(text).toBe("První věta; A\xa0druhá věta")
+})
+
+test('should add non-breaking space inside brackets', () => {
+  let text = preventSingleLetterOrphans("Tada (a to je vše)")
+  expect(text).toBe("Tada (a\xa0to je vše)")
+ text = preventSingleLetterOrphans("Tada (A to je vše)")
+  expect(text).toBe("Tada (A\xa0to je vše)")
 })
