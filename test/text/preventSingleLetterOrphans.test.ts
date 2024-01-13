@@ -1,3 +1,7 @@
+// UNIT TESTS FOR: /src/text/textUtils.ts
+// TEST VERSION: 1.3
+// LAST UPDATE: 2024-01-13
+
 import { expect, test } from 'vitest'
 import { preventSingleLetterOrphans } from '../../src/main'
 

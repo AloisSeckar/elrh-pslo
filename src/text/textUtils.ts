@@ -2,8 +2,9 @@
 // LAST UPDATE: 2024-01-13
 // DESCRIPTION:
 // replace single-letter words from being left alone at the end of the line
-// this is especially important in Czech language, where it is considered
-// a typography error
+// this is especially important in Czech language, where it is considered a typography error
+// TESTS: /test/text/preventSingleLetterOrphans.test.ts
+
 export function preventSingleLetterOrphans (input: string): string {
   if (input) {
     // single-letter words (CS language)
