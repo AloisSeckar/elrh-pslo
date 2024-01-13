@@ -13,9 +13,9 @@ export function preventSingleLetterOrphans (input: string): string {
     // lower case
     input = input.replace(/(\s\(?)([aikosuvz])\s/g, '$1$2\xa0')
     // upper case- possible combinations
-    input = input.replace(/([\.?!:;]?\s?\(?)([AI])\s([ikosuvz])\s/g, '$1$2\xa0$3\xa0')
+    input = input.replace(/(\s?\(?)([AI])\s([ikosuvz])\s/g, '$1$2\xa0$3\xa0')
     // upper case
-    input = input.replace(/([\.?!:;]?\s?\(?)([AIKOSUVZ])\s/g, '$1$2\xa0')
+    input = input.replace(/(\s?\(?)([AIKOSUVZ])\s/g, '$1$2\xa0')
     // other special symbols
     input = input.replace(' - ', ' -\xa0')
     input = input.replace(' č. ', ' č.\xa0')
