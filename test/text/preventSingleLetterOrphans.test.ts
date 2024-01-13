@@ -23,17 +23,32 @@ test('should add non-breaking space after all "s"', () => {
   expect(text).toBe("Pštros s\xa0pštrosicí s\xa0pštorsáčaty")
 })
 
-test('should add non-breaking space after capital "K"', () => {
-  const text = preventSingleLetterOrphans("Ulice jménem K Novým dvorům")
-  expect(text).not.toBe("Ulice jménem K Novým dvorům")
-  expect(text).toBe("Ulice jménem K\xa0Novým dvorům")
-})
-
 test('should add non-breaking space after "a", "s" and "i"', () => {
   const text = preventSingleLetterOrphans("Jan a s ním i Jana")
   expect(text).not.toBe("Jan a\xa0s ním i Jana")
   expect(text).not.toBe("Jan a\xa0s ním i\xa0Jana")
   expect(text).toBe("Jan a\xa0s\xa0ním i\xa0Jana")
+})
+
+test('should add non-breaking space to appropriate places', () => {
+  let text = preventSingleLetterOrphans("Hle, a to je vše.")
+  expect(text).toBe("Hle, a\xa0to je vše.")
+  text = preventSingleLetterOrphans("Hle: a s tím je to vše.")
+  expect(text).toBe("Hle: a\xa0s\xa0tím je to vše.")
+  text = preventSingleLetterOrphans("Hle. A to je vše.")
+  expect(text).toBe("Hle. A\xa0to je vše.")
+  text = preventSingleLetterOrphans("Hle: A s tím je to vše.")
+  expect(text).toBe("Hle: A\xa0s\xa0tím je to vše.")
+  text= preventSingleLetterOrphans("(něco v závorce) a s tím je to vše.")
+  expect(text).toBe("(něco v\xa0závorce) a\xa0s\xa0tím je to vše.")
+  text = preventSingleLetterOrphans("něco před závorkou (a s tím je to vše).")
+  expect(text).toBe("něco před závorkou (a\xa0s\xa0tím je to vše).")
+})
+
+test('should add non-breaking space after capital "K"', () => {
+  const text = preventSingleLetterOrphans("Ulice jménem K Novým dvorům")
+  expect(text).not.toBe("Ulice jménem K Novým dvorům")
+  expect(text).toBe("Ulice jménem K\xa0Novým dvorům")
 })
 
 test('should add non-breaking space after capital "A" at the begining', () => {
@@ -53,20 +68,4 @@ test('should add non-breaking space after capital "A" when after special symbols
   expect(text).toBe("První věta: A\xa0druhá věta")
   text = preventSingleLetterOrphans("První věta; A druhá věta")
   expect(text).toBe("První věta; A\xa0druhá věta")
-})
-
-
-test('should add non-breaking space to appropriate places', () => {
-  const text1 = preventSingleLetterOrphans("Hle, a to je vše.")
-  expect(text1).toBe("Hle, a\xa0to je vše.")
-  const text2 = preventSingleLetterOrphans("Hle: a s tím je to vše.")
-  expect(text2).toBe("Hle: a\xa0s\xa0tím je to vše.")
-  const text3 = preventSingleLetterOrphans("Hle. A to je vše.")
-  expect(text3).toBe("Hle. A\xa0to je vše.")
-  const text4 = preventSingleLetterOrphans("Hle: A s tím je to vše.")
-  expect(text4).toBe("Hle: A\xa0s\xa0tím je to vše.")
-  const text5 = preventSingleLetterOrphans("(něco v závorce) a s tím je to vše.")
-  expect(text5).toBe("(něco v\xa0závorce) a\xa0s\xa0tím je to vše.")
-  const text6 = preventSingleLetterOrphans("něco před závorkou (a s tím je to vše).")
-  expect(text6).toBe("něco před závorkou (a\xa0s\xa0tím je to vše).")
 })
