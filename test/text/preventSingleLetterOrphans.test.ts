@@ -87,3 +87,8 @@ test('should treat legal text', () => {
   expect(text).not.toBe("zákon č. 1/2024 Sb.")
   expect(text).toBe("zákon č.\xa01/2024\xa0Sb.")
 })
+
+test('should treat currency', () => {
+  let text = preventSingleLetterOrphans("1 € = 25 Kč")
+  expect(text).toBe("1\xa0€ = 25\xa0Kč")
+})
