@@ -76,3 +76,14 @@ test('should add non-breaking space inside brackets', () => {
  text = preventSingleLetterOrphans("Tada (A to je vše)")
   expect(text).toBe("Tada (A\xa0to je vše)")
 })
+
+test('should treat special symbols', () => {
+  let text = preventSingleLetterOrphans("Je 50 % šance, že bude pršet - vezměte si deštník")
+  expect(text).toBe("Je 50\xa0% šance, že bude pršet -\xa0vezměte si deštník")
+})
+
+test('should treat legal text', () => {
+  let text = preventSingleLetterOrphans("zákon č. 1/2024 Sb.")
+  expect(text).not.toBe("zákon č. 1/2024 Sb.")
+  expect(text).toBe("zákon č.\xa01/2024\xa0Sb.")
+})

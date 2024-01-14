@@ -14,9 +14,12 @@ export function preventSingleLetterOrphans (input: string): string {
     input = input.replace(/( \(?)([AIKOSUVZaikosuvz]) /g, '$1$2\xa0')
     // other special symbols
     input = input.replace(' - ', ' -\xa0')
-    input = input.replace(' č. ', ' č.\xa0')
+    input = input.replace(' – ', ' –\xa0')
     input = input.replace(' %', '\xa0%')
-    input = input.replace(' Sb.', '\xa0Sb.')
+    input = input.replace(' ‰', '\xa0‰')
+    // other special symbols (CS language)
+    input = input.replace(' č. ', ' č.\xa0') // abbreviation for "number"
+    input = input.replace(' Sb.', '\xa0Sb.') // abbreviation for "Collection of Laws" (common in legal texts)
   }
   return input
 }
