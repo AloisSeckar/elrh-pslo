@@ -1,4 +1,4 @@
-// VERSION: 1.5
+// VERSION: 1.5.1
 // LAST UPDATE: 2024-01-14
 // DESCRIPTION:
 // replace single-letter words from being left alone at the end of the line
@@ -9,9 +9,9 @@ export function preventSingleLetterOrphans (input: string): string {
   if (input) {
     // single-letter words (CS language)
     // dual occurences
-    input = input.replace(/( \(?)([AIai]) ([ikosuvz]) /g, '$1$2\xa0$3\xa0')
+    input = input.replace(/(\s\(?)([AIai])\s([ikosuvz])\s/g, '$1$2\xa0$3\xa0')
     // single occurences
-    input = input.replace(/( \(?)([AIKOSUVZaikosuvz]) /g, '$1$2\xa0')
+    input = input.replace(/(\s\(?)([AIKOSUVZaikosuvz])\s/g, '$1$2\xa0')
 
     // other special symbols
     input = input.replace(' - ', ' -\xa0')
