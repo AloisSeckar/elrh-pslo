@@ -1,10 +1,10 @@
 {
-  "name": "elrh-utils",
-  "version": "0.2.7",
+  "name": "elrh-pslo",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vitest run && tsc && vite build",
+    "build": "npm install && vitest run && tsc && vite build",
     "preview": "vite preview",
     "test": "vitest"
   },

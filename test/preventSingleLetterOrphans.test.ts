@@ -1,9 +1,5 @@
-// UNIT TESTS FOR: /src/text/textUtils.ts
-// TEST VERSION: 1.5
-// LAST UPDATE: 2024-01-14
-
 import { expect, test } from 'vitest'
-import { preventSingleLetterOrphans } from '../../src/main'
+import { preventSingleLetterOrphans } from '../src/main'
 
 test('should add non-breaking space after "a"', () => {
   const text = preventSingleLetterOrphans("Ahoj a nashledanou!")
