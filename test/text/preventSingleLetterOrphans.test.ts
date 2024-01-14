@@ -73,22 +73,29 @@ test('should add non-breaking space after capital "A" at the begining of sentenc
 test('should add non-breaking space inside brackets', () => {
   let text = preventSingleLetterOrphans("Tada (a to je vše)")
   expect(text).toBe("Tada (a\xa0to je vše)")
- text = preventSingleLetterOrphans("Tada (A to je vše)")
+  text = preventSingleLetterOrphans("Tada (A to je vše)")
   expect(text).toBe("Tada (A\xa0to je vše)")
 })
 
 test('should treat special symbols', () => {
-  let text = preventSingleLetterOrphans("Je 50 % šance, že bude pršet - vezměte si deštník")
+  const text = preventSingleLetterOrphans("Je 50 % šance, že bude pršet - vezměte si deštník")
   expect(text).toBe("Je 50\xa0% šance, že bude pršet -\xa0vezměte si deštník")
 })
 
 test('should treat legal text', () => {
-  let text = preventSingleLetterOrphans("zákon č. 1/2024 Sb.")
+  const text = preventSingleLetterOrphans("zákon č. 1/2024 Sb.")
   expect(text).not.toBe("zákon č. 1/2024 Sb.")
   expect(text).toBe("zákon č.\xa01/2024\xa0Sb.")
 })
 
 test('should treat currency', () => {
-  let text = preventSingleLetterOrphans("1 € = 25 Kč")
+  const text = preventSingleLetterOrphans("1 € = 25 Kč")
   expect(text).toBe("1\xa0€ = 25\xa0Kč")
+})
+
+test('should treat numbers', () => {
+  let text = preventSingleLetterOrphans("1 000 000")
+  expect(text).toBe("1\xa0000\xa0000")
+  text = preventSingleLetterOrphans("+420 111 222 333")
+  expect(text).toBe("+420\xa0111\xa0222\xa0333")
 })

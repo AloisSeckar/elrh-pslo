@@ -12,6 +12,7 @@ export function preventSingleLetterOrphans (input: string): string {
     input = input.replace(/( \(?)([AIai]) ([ikosuvz]) /g, '$1$2\xa0$3\xa0')
     // single occurences
     input = input.replace(/( \(?)([AIKOSUVZaikosuvz]) /g, '$1$2\xa0')
+
     // other special symbols
     input = input.replace(' - ', ' -\xa0')
     input = input.replace(' – ', ' –\xa0')
@@ -20,10 +21,14 @@ export function preventSingleLetterOrphans (input: string): string {
     // other special symbols (CS language)
     input = input.replace(' č. ', ' č.\xa0') // abbreviation for "number"
     input = input.replace(' Sb.', '\xa0Sb.') // abbreviation for "Collection of Laws" (common in legal texts)
+    
     // currency
     input = input.replace(' Kč', '\xa0Kč')
     input = input.replace(' €', '\xa0€')
     // $ should be right before number - $50
+    
+    // splitted numbers
+    input = input.replace(/(\\xa0)?(\d) (\d)/g, '$2\xa0$3')
   }
   return input
 }
