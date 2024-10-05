@@ -2,9 +2,12 @@
   "name": "elrh-pslo",
   "version": "1.1.0",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/elrh-pslo.cjs",
   "module": "./dist/elrh-pslo.js",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/elrh-pslo.js",
@@ -21,6 +24,7 @@
     "@types/node": "22.7.4",
     "typescript": "5.6.2",
     "vite": "5.4.8",
+    "vite-plugin-dts": "4.2.3",
     "vitest": "2.1.2"
   }
 }
