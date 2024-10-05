@@ -11,7 +11,12 @@ export default defineConfig({
       name: 'elrh-pslo',
       fileName: (format) => `elrh-pslo.${format}.js`,
       formats: ['es', 'cjs'] 
-    } 
+    },
+    rollupOptions: {
+      output: {
+        exports: 'named',
+      }
+    }
   },
   resolve: { 
     alias: { 
