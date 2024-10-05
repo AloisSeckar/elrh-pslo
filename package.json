@@ -2,6 +2,15 @@
   "name": "elrh-pslo",
   "version": "1.0.1",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/elrh-pslo.cjs",
+  "module": "./dist/elrh-pslo.js",
+  "exports": {
+    ".": {
+      "import": "./dist/elrh-pslo.js",
+      "require": "./dist/elrh-pslo.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm install && vitest run && tsc && vite build",
