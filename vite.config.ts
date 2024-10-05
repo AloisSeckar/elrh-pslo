@@ -14,7 +14,8 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        exports: 'auto',
+        exports: 'named',
+        interop: 'auto',
       }
     }
   },

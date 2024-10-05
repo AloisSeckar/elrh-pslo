@@ -33,3 +33,7 @@ export function preventSingleLetterOrphans (input: string): string {
   }
   return input
 }
+
+export default {
+  preventSingleLetterOrphans,
+}
