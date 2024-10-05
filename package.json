@@ -5,13 +5,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/elrh-pslo.cjs.js",
-  "module": "./dist/elrh-pslo.es.js",
+  "main": "./dist/elrh-pslo.cjs",
+  "module": "./dist/elrh-pslo.mjs",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/elrh-pslo.cjs.js",
-      "require": "./dist/elrh-pslo.es.js",
+      "import": "./dist/elrh-pslo.cjs",
+      "require": "./dist/elrh-pslo.mjs",
       "types": "./dist/types/index.d.ts"
     }
   },

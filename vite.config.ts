@@ -9,8 +9,8 @@ export default defineConfig({
     lib: { 
       entry: resolve(__dirname, 'src/main.ts'), 
       name: 'elrh-pslo',
-      fileName: (format) => `elrh-pslo.${format}.js`,
-      formats: ['es', 'cjs'] 
+      formats: ['es', 'cjs'],
+      fileName: (format) => format === 'es' ? 'elrh-pslo.mjs' : 'elrh-pslo.cjs',
     },
     rollupOptions: {
       output: {
@@ -21,10 +21,10 @@ export default defineConfig({
   },
   resolve: { 
     alias: { 
-      src: resolve('src/') 
+      src: resolve('src/'),
     } 
   },
   plugins: [
-    dts({ outDir: 'dist/types', insertTypesEntry: true })
+    dts({ outDir: 'dist/types', insertTypesEntry: true }),
   ],
 })
